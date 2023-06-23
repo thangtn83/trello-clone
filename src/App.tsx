@@ -3,15 +3,31 @@ import { AppContainer } from "./styles";
 import { Column } from "./Column";
 import { AddNewItem } from "./AddNewItem";
 import { useAppState } from "./hooks/useAppState";
+import { nanoid } from "nanoid";
+import { List } from "./types";
+import { addList } from "./store/actions";
 
 function App() {
-  const { lists } = useAppState();
+  const { lists, dispatch } = useAppState();
+
+  const handleAddNewColumn = (listTitle: string) => {
+    const newList: List = {
+      id: nanoid(),
+      tasks: [],
+      text: listTitle,
+    };
+    dispatch(addList(newList));
+  };
+
   return (
     <AppContainer>
       {lists?.map((list) => (
         <Column key={list.id} title={list.text} id={list.id} />
       ))}
-      <AddNewItem onAdd={console.log} textToggleButton={"+ Add new list"} />
+      <AddNewItem
+        onAdd={(listTitle) => handleAddNewColumn(listTitle)}
+        textToggleButton={"+ Add new list"}
+      />
     </AppContainer>
   );
 }

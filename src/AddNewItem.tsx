@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NewItemForm } from "./NewItemForm";
 
 type Props = {
-  onAdd: (card: unknown) => void;
+  onAdd: (title: string) => void;
   textToggleButton: string;
 };
 export const AddNewItem = ({ onAdd, textToggleButton }: Props) => {
