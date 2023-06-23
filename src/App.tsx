@@ -6,6 +6,7 @@ import { useAppState } from "./hooks/useAppState";
 import { nanoid } from "nanoid";
 import { List } from "./types";
 import { addList } from "./store/actions";
+import { CustomDragLayer } from "./components/CustomDragLayer";
 
 function App() {
   const { lists, dispatch } = useAppState();
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <AppContainer>
+      <CustomDragLayer />
       {lists?.map((list) => (
         <Column key={list.id} title={list.text} id={list.id} />
       ))}

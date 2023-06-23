@@ -15,7 +15,8 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.0-rc.5"
+    "styled-components": "^6.0.0-rc.5",
+    "throttle-debounce-ts": "^1.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

@@ -1,7 +1,42 @@
 import styled from "styled-components";
 
+interface DragPreviewContainerProps {
+  isHidden?: boolean;
+  isPreview?: boolean;
+}
+type DragPreviewWrapperProps = {
+  position: {
+    x: number;
+    y: number;
+  };
+};
+
+export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
+  ({ position: { x, y } }) => ({
+    style: {
+      transform: `translate(${x}px, ${y}px)`,
+    },
+  })
+)<DragPreviewWrapperProps>``;
+
+export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
+  transform: ${(props) => (props.isPreview ? "rotate(5deg)" : undefined)};
+  opacity: ${(props) => (props.isHidden ? 0 : 1)};
+`;
+
+export const CustomDragLayerContainer = styled.div`
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+`;
+
 export const AppContainer = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   padding: 30px;
   width: 100%;
@@ -9,7 +44,7 @@ export const AppContainer = styled.div`
   overflow: scroll;
 `;
 
-export const ColumnContainer = styled.div`
+export const ColumnContainer = styled(DragPreviewContainer)`
   width: 360px;
   min-height: 40px;
   background-color: transparent;
@@ -26,7 +61,7 @@ export const ColumnTitle = styled.div`
   margin-bottom: 10px;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(DragPreviewContainer)`
   border-radius: 10px;
   background-color: #f4f4f4;
   width: 100%;
