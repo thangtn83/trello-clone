@@ -1,16 +1,16 @@
 // @flow
 import * as React from "react";
-import { ColumnContainer, ColumnTitle } from "./styles";
+import { ColumnContainer, ColumnTitle } from "../styles";
 import { Card } from "./Card";
-import { AddNewItem } from "./AddNewItem";
-import { useAppState } from "./hooks/useAppState";
-import { addTask, moveList } from "./store/actions";
+import { AddNewItem } from "../AddNewItem";
+import { useAppState } from "../hooks/useAppState";
+import { addTask, moveList } from "../store/actions";
 import { nanoid } from "nanoid";
 import { useRef } from "react";
-import { useItemDrag } from "./hooks/useItemDrag";
+import { useItemDrag } from "../hooks/useItemDrag";
 import { useDrop } from "react-dnd";
 import { throttle } from "throttle-debounce-ts";
-import { isHidden } from "./utils/isHidden";
+import { isHidden } from "../utils/isHidden";
 
 type Props = {
   title: string;
@@ -42,9 +42,10 @@ export const Column = ({ id, title, isPreview }: Props) => {
       isPreview={isPreview}
     >
       <ColumnTitle>{title}</ColumnTitle>
-      {tasks.map((task) => (
-        <Card key={task.id} title={task.text} />
-      ))}
+      {tasks.length > 0 &&
+        tasks.map((task) => (
+          <Card key={task.id} title={task.text} columnId={id} id={task.id} />
+        ))}
       <AddNewItem
         onAdd={(title) =>
           dispatch(

@@ -4,6 +4,7 @@ export enum ActionType {
   ADD_LIST = "ADD_LIST",
   ADD_TASK = "ADD_TASK",
   MOVE_LIST = "MOVE_LIST",
+  MOVE_TASK = "MOVE_TASK",
   SET_DRAGGED_ITEM = "SET_DRAGGED_ITEM",
 }
 interface AddListAction {
@@ -33,11 +34,21 @@ interface SetDraggedItemAction {
     draggedItem: DragItem | null;
   };
 }
+interface MoveCardAction {
+  type: ActionType.MOVE_TASK;
+  payload: {
+    fromId: string;
+    toId: string | null;
+    sourceColumnId: string;
+    targetColumnId: string;
+  };
+}
 
 export type AppAction =
   | AddListAction
   | AddTaskAction
   | MoveListAction
+  | MoveCardAction
   | SetDraggedItemAction;
 
 export const addTask = (listId: string, task: Task): AppAction => {
@@ -60,6 +71,20 @@ export const moveList = (from: string, to: string): AppAction => ({
   payload: {
     fromId: from,
     toId: to,
+  },
+});
+export const moveTask = (
+  fromId: string,
+  toId: string,
+  sourceColId: string,
+  targetColId: string
+): AppAction => ({
+  type: ActionType.MOVE_TASK,
+  payload: {
+    fromId,
+    toId,
+    sourceColumnId: sourceColId,
+    targetColumnId: targetColId,
   },
 });
 

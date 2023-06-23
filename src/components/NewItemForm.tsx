@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
-import { NewItemButton, NewItemFormContainer, NewItemInput } from "./styles";
+import { NewItemButton, NewItemFormContainer, NewItemInput } from "../styles";
 import { useState } from "react";
-import { useFocus } from "./hooks/useFocus";
+import { useFocus } from "../hooks/useFocus";
 
 type Props = {
   onAdd: (text: string) => void;

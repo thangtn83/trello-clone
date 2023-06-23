@@ -67,6 +67,7 @@ export const CardContainer = styled(DragPreviewContainer)`
   width: 100%;
   padding: 20px;
   margin-bottom: 10px;
+  max-width: 320px;
 `;
 
 export const AddNewItemContainer = styled.div`

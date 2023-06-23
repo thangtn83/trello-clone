@@ -2,7 +2,7 @@
 import * as React from "react";
 import { AddNewItemContainer } from "./styles";
 import { useState } from "react";
-import { NewItemForm } from "./NewItemForm";
+import { NewItemForm } from "./components/NewItemForm";
 
 type Props = {
   onAdd: (title: string) => void;

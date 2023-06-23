@@ -1,6 +1,6 @@
 import "./App.css";
 import { AppContainer } from "./styles";
-import { Column } from "./Column";
+import { Column } from "./components/Column";
 import { AddNewItem } from "./AddNewItem";
 import { useAppState } from "./hooks/useAppState";
 import { nanoid } from "nanoid";
