@@ -1,27 +1,14 @@
 import "./App.css";
-import {
-  AppContainer,
-  CardContainer,
-  ColumnContainer,
-  ColumnTitle,
-} from "./styles";
+import { AppContainer } from "./styles";
+import { Column } from "./Column";
 
 function App() {
   return (
     <div>
       <AppContainer>
-        <ColumnContainer>
-          <ColumnTitle>Column Title</ColumnTitle>
-          <CardContainer>
-            <div>Content card</div>
-          </CardContainer>
-        </ColumnContainer>
-        <ColumnContainer>
-          <ColumnTitle>Column Title</ColumnTitle>
-          <CardContainer>
-            <div>Content card</div>
-          </CardContainer>
-        </ColumnContainer>
+        <Column title={"First column"} />
+        <Column title={"Second column"} />
+        <Column title={"Thirst column"} />
       </AppContainer>
     </div>
   );
